@@ -2,16 +2,18 @@ name: Update README
 
 on:
   schedule:
-    - cron: '*/30 * * * *' # Har 30 minute mein update hoga
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Update Spotify
-        uses: tthn0/Spotify-Readme@master
+        uses: tthn0/Spotify-Readme@main
         with:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
